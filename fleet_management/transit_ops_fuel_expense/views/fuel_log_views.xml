@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_fuel_log_tree" model="ir.ui.view">
+        <field name="name">fuel.log.tree</field>
+        <field name="model">fuel.log</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="vehicle"/>
+                <field name="driver"/>
+                <field name="fuel_date"/>
+                <field name="fuel_type"/>
+                <field name="liters"/>
+                <field name="total_cost"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_fuel_log_form" model="ir.ui.view">
+        <field name="name">fuel.log.form</field>
+        <field name="model">fuel.log</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="vehicle"/>
+                        <field name="driver"/>
+                        <field name="fuel_date"/>
+                        <field name="fuel_type"/>
+                        <field name="liters"/>
+                        <field name="price_per_liter"/>
+                        <field name="total_cost"/>
+                        <field name="odometer"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_fuel_log" model="ir.actions.act_window">
+        <field name="name">Fuel Log</field>
+        <field name="res_model">fuel.log</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

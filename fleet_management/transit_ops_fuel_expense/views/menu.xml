@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <menuitem id="menu_transit_root"
+              name="TransitOps"/>
+
+    <menuitem id="menu_fuel_log"
+              name="Fuel Log"
+              parent="menu_transit_root"
+              action="action_fuel_log"/>
+
+    <menuitem id="menu_expense"
+              name="Expenses"
+              parent="menu_transit_root"
+              action="action_vehicle_expense"/>
+
+    <menuitem id="menu_report"
+              name="Reports"
+              parent="menu_transit_root"
+              action="action_fuel_report"/>
+
+</odoo>

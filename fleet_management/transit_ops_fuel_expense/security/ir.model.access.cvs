@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fuel_log,fuel.log,model_fuel_log,,1,1,1,1
+access_vehicle_expense,vehicle.expense,model_vehicle_expense,,1,1,1,1
+access_fuel_expense_report,fuel.expense.report,model_fuel_expense_report,,1,1,1,1
