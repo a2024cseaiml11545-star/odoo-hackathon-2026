@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_driver_tree" model="ir.ui.view">
+        <field name="name">fleet.driver.tree</field>
+        <field name="model">fleet.driver</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="contact_number"/>
+                <field name="license_number"/>
+                <field name="license_category"/>
+                <field name="license_expiry_date"/>
+                <field name="safety_score"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_driver_form" model="ir.ui.view">
+        <field name="name">fleet.driver.form</field>
+        <field name="model">fleet.driver</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="contact_number"/>
+                        <field name="license_number"/>
+                        <field name="license_category"/>
+                        <field name="license_expiry_date"/>
+                        <field name="safety_score"/>
+                        <field name="status"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

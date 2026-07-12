@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_trip_tree" model="ir.ui.view">
+        <field name="name">fleet.trip.tree</field>
+        <field name="model">fleet.trip</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="source"/>
+                <field name="destination"/>
+                <field name="vehicle_id"/>
+                <field name="driver_id"/>
+                <field name="cargo_weight"/>
+                <field name="planned_distance"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_trip_form" model="ir.ui.view">
+        <field name="name">fleet.trip.form</field>
+        <field name="model">fleet.trip</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="source"/>
+                        <field name="destination"/>
+                        <field name="vehicle_id"/>
+                        <field name="driver_id"/>
+                        <field name="cargo_weight"/>
+                        <field name="planned_distance"/>
+                        <field name="status"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

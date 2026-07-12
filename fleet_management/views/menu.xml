@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Root Menu -->
+    <menuitem id="fleet_root_menu"
+              name="Fleet Management"
+              sequence="1"/>
+
+    <!-- Driver Action -->
+    <record id="action_driver" model="ir.actions.act_window">
+        <field name="name">Drivers</field>
+        <field name="res_model">fleet.driver</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Driver Menu -->
+    <menuitem id="fleet_driver_menu"
+              name="Drivers"
+              parent="fleet_root_menu"
+              action="action_driver"
+              sequence="1"/>
+
+    <!-- Trip Action -->
+    <record id="action_trip" model="ir.actions.act_window">
+        <field name="name">Trips</field>
+        <field name="res_model">fleet.trip</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Trip Menu -->
+    <menuitem id="fleet_trip_menu"
+              name="Trips"
+              parent="fleet_root_menu"
+              action="action_trip"
+              sequence="2"/>
+
+</odoo>

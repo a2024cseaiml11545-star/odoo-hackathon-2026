@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fleet_driver,fleet.driver,model_fleet_driver,,1,1,1,1
+access_fleet_trip,fleet.trip,model_fleet_trip,,1,1,1,1

@@ -8,6 +8,7 @@
         'security/ir.model.access.csv',
         'views/driver_views.xml',
         'views/trip_views.xml',
+        'views/menu.xml',
     ],
     'installable': True,
     'application': True,
