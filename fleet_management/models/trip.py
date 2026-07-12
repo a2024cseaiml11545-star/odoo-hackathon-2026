@@ -1,4 +1,6 @@
-from odoo import models, fields
+from odoo import models, fields, api
+from odoo.exceptions import ValidationError
+
 
 class FleetTrip(models.Model):
     _name = 'fleet.trip'
@@ -9,12 +11,11 @@ class FleetTrip(models.Model):
     source = fields.Char(string="Source", required=True)
 
     destination = fields.Char(string="Destination", required=True)
-    
+
     vehicle_id = fields.Many2one(
         'fleet.vehicle',
         string="Vehicle",
         required=True
-
     )
 
     driver_id = fields.Many2one(
@@ -34,14 +35,32 @@ class FleetTrip(models.Model):
         ('cancelled', 'Cancelled')
     ], string="Trip Status", default='draft')
 
-    from odoo.exceptions import ValidationError
-from odoo import api
+    @api.constrains('driver_id')
+    def _check_driver_status(self):
+        for record in self:
+            if record.driver_id.status == 'suspended':
+                raise ValidationError("Suspended driver cannot be assigned to a trip.")
 
-@api.constrains('driver_id')
-def _check_driver_status(self):
-    for record in self:
-        if record.driver_id.status == 'suspended':
-            raise ValidationError("Suspended driver cannot be assigned to a trip.")
+            if record.driver_id.status == 'on_trip':
+                raise ValidationError("Driver is already assigned to another trip.")
 
-        if record.driver_id.status == 'on_trip':
-            raise ValidationError("Driver is already assigned to another trip.")
+    def action_dispatch(self):
+        for record in self:
+            record.status = 'dispatched'
+            record.driver_id.status = 'on_trip'
+            if record.vehicle_id:
+                record.vehicle_id.status = 'on_trip'
+
+    def action_complete(self):
+        for record in self:
+            record.status = 'completed'
+            record.driver_id.status = 'available'
+            if record.vehicle_id:
+                record.vehicle_id.status = 'available'
+
+    def action_cancel(self):
+        for record in self:
+            record.status = 'cancelled'
+            record.driver_id.status = 'available'
+            if record.vehicle_id:
+                record.vehicle_id.status = 'available'
